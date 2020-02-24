@@ -72,9 +72,11 @@ class Medusa:
         api_key = task.requests.post('{}/authenticate'.format(base_url), json=body_auth).json()[
             'token'
         ]
-
+        
+        api_key = api_key[2:-1]
+        
         headers = {'authorization': 'Bearer ' + api_key}
-
+        
         params = {'limit': 1000}
 
         series = task.requests.get(
